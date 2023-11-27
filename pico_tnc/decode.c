@@ -41,7 +41,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #define FCS_OK 0x0f47
 //#define FCS_OK (0x0f47 ^ 0xffff)
-#define MIN_LEN (7 * 2 + 1 + 1 + 2) // Address field *2, Control, PID, FCS
+#define MIN_LEN (7 * 2 + 1 + 1 + 1) // min len seem to be 17? -Irjala1
 
 #define STR_LEN 64
 
@@ -260,7 +260,7 @@ void demodulator(tnc_t *tp, int adc)
 
 #define CDT_THR_LOW 1024
 #define CDT_THR_HIGH (CDT_THR_LOW * 2) // low +6dB
-
+/*
     if (!tp->cdt && tp->cdt_lvl > CDT_THR_HIGH) { // CDT on
 
         gpio_put(tp->cdt_pin, 1);
@@ -278,6 +278,9 @@ void demodulator(tnc_t *tp, int adc)
     }
 
     if (!tp->cdt) return;
+*/
+    gpio_put(tp->cdt_pin, (tp->state == DATA) ); //carrier detected when reading data?
+    tp->cdt = (tp->state == DATA);               //carrier detected when reading data?
 
 #if 0
 	sum += adc;
