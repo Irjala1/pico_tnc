@@ -47,7 +47,6 @@ void digipeat(tnc_t *tp)
 
     if (len < AX25_MIN_LEN) return; // too short
 
-    if (!ax25_ui(packet, len)) return; // not UI packet
 
     int offset = AX25_ADDR_LEN; // src addr
 
