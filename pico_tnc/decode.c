@@ -260,6 +260,7 @@ void demodulator(tnc_t *tp, int adc)
 
 #define CDT_THR_LOW 1024
 #define CDT_THR_HIGH (CDT_THR_LOW * 2) // low +6dB
+	
 /*
     if (!tp->cdt && tp->cdt_lvl > CDT_THR_HIGH) { // CDT on
 
